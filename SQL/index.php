@@ -11,14 +11,31 @@ session_start();
 <!DOCTYPE html>
 <html>
 <head>
-	<title>My website</title>
+	<title>Company Name</title>
+	<link href="style2.css" rel="stylesheet">
+
 </head>
 <body>
 
-	<a href="logout.php">Logout</a>
-	<h1>This is the index page</h1>
+	<div class="container">
+		<div id="header-box">
+			<div class="header">
+				Hello, <?php echo $user_data['user_name']; ?>
+			</div>
 
-	<br>
-	Hello, <?php echo $user_data['user_name']; ?>
+		</div>
+		<div class="content">
+			<div class="text">
+				<h2>{TAG}</h2>
+				<a href="logout.php">Logout</a>
+			</div>
+			
+		</div>
+
+
+	</div>
+
+
+	
 </body>
 </html>

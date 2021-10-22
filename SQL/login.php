@@ -16,12 +16,14 @@ session_start();
 		//something was posted
 		$user_name = $_POST['user_name'];
 		$password = $_POST['password'];
+		$hash = md5($password);
 
 		if(!empty($user_name) && !empty($password))
 		{
 
 			//read from database
-			$query = "select * from users where user_name = '$user_name' limit 1";
+			$query = "select * from users where user_name = '$user_name' and password = '$hash' limit 1";
+			
 			// print($query."\n");
 			$result = mysqli_query($con, $query) or print(mysqli_error($con)."\n");
 
@@ -34,15 +36,15 @@ session_start();
 					$user_data = mysqli_fetch_assoc($result);
 
 					
-					if($user_data['password'] === md5($password))
-					{
+					// if($user_data['password'] === md5($password))
+					// {
 
 						$_SESSION['user_id'] = $user_data['user_id'];
 						$error = "";
 
 						header("Location: index.php");
 						die;
-					}
+					// }
 				}
 			}
 			
@@ -121,7 +123,7 @@ session_start();
 			<input type="checkbox" class="toggle">
 			<div class="textbox">
 				<div class="text">
-					Hint: 
+					Hint: How do you alter the conditions of the query to be true?
 					<br><br>
 					<span><?php echo $query ?></span>
 				</div>

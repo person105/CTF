@@ -24,32 +24,37 @@ session_start();
 <html>
 <head>
 	<title>My website</title>
-	<link href="stylesheet.css" rel="stylesheet" type="text/css">
+	<link href="style2.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
 
-	<a href="logout.php">Logout</a>
-	<h1>Profile</h1>
-	<h2>Hello, <?php echo $user_data['user_name']; ?></h2>
-	<?php if ($user_data['user_name'] === 'admin'){ ?>
-		<h3>THM{XSS}</h3>
-	<?php } ?>
-	<h3><?php echo $user_data['user_description']?></h3>
+	<div class="container">
+		<div id="header">Hello, <?php echo $user_data['user_name']; ?></div>
+
+		<form method="post">
+			<div class="box">
+
+				<?php if ($user_data['user_name'] === 'admin'){ ?>
+					<h3>THM{XSS}</h3>
+				<?php } ?>
+
+				<div style="font-size: 20px;margin: 10px;color: black;">Submit user description</div>
+
+				<h3><?php echo $user_data['user_description']?></h3>
+
+				<input type="hidden" name="user_name" value="<?php echo $user_data['user_name'] ?>">
+
+				<input class="input-field" name="desc"><br><br>
+				<input class="button" type="submit" value="Submit"><br><br>
+
+				<a href="logout.php">Logout</a>
+
+			</div>
+		</form>
+	</div>
 	
-
-
-	<form method="post">
-		<div id="box">
-			<div style="font-size: 20px;margin: 10px;color: white;">Submit description</div>
-			<input type="hidden" name="user_name" value="<?php echo $user_data['user_name'] ?>">
-
-			<input id="text" name="desc"><br><br>
-			<input id="button" type="submit" value="Submit"><br><br>
-		</div>
-
-
-	</form>
 	
 </body>
 </html>
+
