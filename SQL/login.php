@@ -4,6 +4,7 @@
 session_start();
 
 	$error = "";
+	$query = "";
 
 
 	include("connection.php");
@@ -21,7 +22,7 @@ session_start();
 
 			//read from database
 			$query = "select * from users where user_name = '$user_name' limit 1";
-			print($query."\n");
+			// print($query."\n");
 			$result = mysqli_query($con, $query) or print(mysqli_error($con)."\n");
 
 
@@ -32,7 +33,6 @@ session_start();
 
 					$user_data = mysqli_fetch_assoc($result);
 
-					print($user_data['password']."\n");
 					
 					if($user_data['password'] === md5($password))
 					{
@@ -66,6 +66,7 @@ session_start();
 
 
 	<link href="style.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
 
 </head>
 
@@ -74,39 +75,59 @@ session_start();
     	color: red;
 		font-size: 18px;
         font-style: italic;
+		left: 0;
+		padding-top: 10px;
+		padding-bottom: 10px;    
     }
   </style>
 
 <body>
 	<div id="container">
 		<div id="header">Company Name</div>
-		<div id="box">
-			<form method="post" id="login">
-				<div style="font-size: 20px;margin: 10px;color: white;">Login</div>
-				
-				<span>Username</span>
-				<input class="text" type="text" name="user_name">
 
-				<br><br>
+		<div class="filler">.</div>
 
-				<!--- Please remember to remove print check for password --->
-				<span>Password</span>
-				<input class="text" type="password" name="password">
+		<div class="content">
+			<div id="box">
+				<form method="post" id="login">
+					<div style="font-size: 20px;margin: 10px;color: white;">Login</div>
+					
+					<span>Username</span>
+					<input class="text" type="text" name="user_name">
 
-				<br><br>
+					<br><br>
 
-				<input class="button" type="submit" value="Login">
+					<!--- Please remember to remove print check for password --->
+					<span>Password</span>
+					<input class="text" type="password" name="password">
+
+					<br><br>
+
+					<input class="button" type="submit" value="Login">
 
 
-				<br><br>
+					<br><br>
 
-				<div class="error"><?php echo $error ?></div>
+					<div class="error"><?php echo $error ?></div>
 
 
-			</form>
+				</form>
+			
 		
-      
+			</div>
 		</div>
+
+		<div id="helpbar">
+			<input type="checkbox" class="toggle">
+			<div class="textbox">
+				<div class="text">
+					Hint: 
+					<br><br>
+					<span><?php echo $query ?></span>
+				</div>
+			</div>
+		</div>
+
 
 		<div id="footer">.</div>
 	</div>

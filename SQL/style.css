@@ -2,9 +2,7 @@ body {
     margin: 0;
 	background-image: url('../assets/woodbg.jpeg');
 
-	align-items: center;
-    justify-content: center;
-    
+
 }
 
 
@@ -19,27 +17,36 @@ body {
     display: grid;
 
     grid-template-rows: 200px 500px 100px;
+	grid-template-columns: 1fr 400px;
 
     gap: 10px;
 
     padding: 10px;
     box-sizing: border-box;
 
-    align-items: center;
+	align-items: center;
     justify-content: center;
+
+	overflow: hidden;
+	
 
 }
 
-/* #container div {
-    padding: 10px;
-    border: 1px solid #000000;
-} */
+.filler {
+	grid-column-start:2 ;
+    grid-column-end:3 ;
+	visibility: hidden
+
+}
 
 #header {
     grid-column-start:1 ;
     grid-column-end:2 ;
     color: white;
     font-size: 38px;
+
+	text-align: center;
+
 
 }
 
@@ -49,6 +56,13 @@ body {
     
     visibility: hidden
 
+}
+
+.content {
+	display: flex;
+
+	align-items: center;
+    justify-content: center;
 }
 
 
@@ -63,6 +77,7 @@ body {
 
     text-align: center;
 	position: relative;
+
 
 }
 
@@ -96,48 +111,109 @@ span {
     font-size: 20px;
 }
 
+#helpbar {
 
-.toggle-btn {
-	appearance: none;
-	width: 150px;
-	height: 40px;
-	border: 1px solid black;
-	position: absolute;
-	top: 35px;
-	left: 30%;
-	border-radius: 100px;
+	display: grid;
+
+
+	grid-template-columns: 50px 1fr;
+
+    width: 400px;
+	height: 500px;
+
+    background-color: transparent;
+	opacity: 0.7;
+    border-radius: 18px;
+
+	margin-left: 0px;
+
+    text-align: center;
+
 }
 
-/* .toggle-btn::before{
-	content: 'Signup';
-	color: white;
-	font-family: 'Quicksand', sans-serif;
+#helpbar .textbox {
+
+	width: 100%;
+	height: 100%;
+
+    background-color: white;
+    border-radius: 18px;
+	
+	grid-column-start:2 ;
+    grid-column-end:3 ;
+
+	transition: 0.5s;
+
+
+}
+
+#helpbar .text {
+
+	margin: 0;
+	text-align: center;
+	color: solid black;
+
+	border-color: transparent;
+
+
+}
+
+
+#helpbar .toggle {
+
+	grid-column-start:1 ;
+    grid-column-end:3 ;
+
+	appearance: none;
+	width: 40px;
+	height: 40px;
+	position: absolute;
+
+	margin-left: 30px;
+
+	bottom: 45%;
+	
+
+
+}
+
+.toggle::before{
+	content: '\f054';
+	color: grey;
+	font-family: fontAwesome;
     font-size: 18px;
+
+	background-color: white;
+	border: 5px solid grey;
+
+	border-radius: 50%;
 
 
 	position: absolute;
-	top:0;
-	left: 0;
-	width: 50%;
+	width: 100%;
 	height: 100%;
-	background: peru;
-	border-radius: 100px;
+
+	line-height: 30px;
+	text-align: center;
 
 	display:grid;
 	place-items: center;
+
+	margin-left: 0;
 	
 	transition: 0.5s;
+} 
+
+.toggle:checked::before {
+	content: '\f053';
+	margin-left: 320px;
+
 }
 
-.toggle-btn:checked::before {
-	content: 'Login';
-	left: 50%;
+.toggle:checked ~ .textbox {
+	margin-left: 320px;
+
 }
 
-.toggle-btn:checked ~ #signup {
-	left: -101%;
-}
 
-.toggle-btn:checked ~ #login{
-	left: 0;
-} */
+
