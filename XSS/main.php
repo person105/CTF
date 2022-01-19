@@ -2,8 +2,8 @@
 
 session_start();
 
-	include("connection.php");
-	include("functions.php");
+	include("../shared/connection.php");
+	include("../shared/functions.php");
 
 
 	if($_SERVER['REQUEST_METHOD'] == "POST")
@@ -91,7 +91,7 @@ session_start();
 <html>
 <head>
 	<title>Main Website</title>
-	<link href="style.css" rel="stylesheet">
+	<link href="../shared/login_style_2.css" rel="stylesheet">
 
 </head>
 <body>

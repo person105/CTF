@@ -1,8 +1,8 @@
 <?php 
 session_start();
 
-	include("connection.php");
-	include("functions.php");
+	include("../shared/connection.php");
+	include("../shared/functions.php");
 
 	$user_data = check_login($con);
 
@@ -12,7 +12,7 @@ session_start();
 <html>
 <head>
 	<title>Company Name</title>
-	<link href="style2.css" rel="stylesheet">
+	<link href="../shared/site_style_1.css" rel="stylesheet">
 
 </head>
 <body>

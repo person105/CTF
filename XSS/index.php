@@ -1,8 +1,8 @@
 <?php 
 session_start();
 
-	include("connection.php");
-	include("functions.php");
+	include("../shared/connection.php");
+	include("../shared/functions.php");
 
 	if($_SERVER['REQUEST_METHOD'] == "POST")
 	{
@@ -24,7 +24,7 @@ session_start();
 <html>
 <head>
 	<title>My website</title>
-	<link href="style2.css" rel="stylesheet" type="text/css">
+	<link href="../shared/site_style_2.css" rel="stylesheet" type="text/css">
 
 </head>
 <body>
